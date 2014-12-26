@@ -30,6 +30,13 @@
 * [简体中文](https://github.com/JuanitoFatas/ruby-style-guide/blob/master/README-zhCN.md)
 * [繁體中文](https://github.com/JuanitoFatas/ruby-style-guide/blob/master/README-zhTW.md)
 * [法文](https://github.com/porecreat/ruby-style-guide/blob/master/README-frFR.md)
+* [德文](https://github.com/arbox/ruby-style-guide/blob/master/README-deDE.md)
+* [日文](https://github.com/fortissimo1997/ruby-style-guide/blob/japanese/README.ja.md)
+* [韓文](https://github.com/dalzony/ruby-style-guide/blob/master/README-koKR.md)
+* [葡萄牙文](https://github.com/rubensmabueno/ruby-style-guide/blob/master/README-PT-BR.md)
+* [俄文](https://github.com/arbox/ruby-style-guide/blob/master/README-ruRU.md)
+* [西班牙文](https://github.com/alemohamad/ruby-style-guide/blob/master/README-esLA.md)
+* [越南文](https://github.com/scrum2b/ruby-style-guide/blob/master/README-viVN.md)
 
 ## 目錄
 
@@ -75,60 +82,59 @@
       $ git config --global core.autocrlf true
       ```
 
-* Don't use `;` to separate statements and expressions. As a
-  corollary - use one expression per line.
+* 不要使用 `;` 來區隔狀態和描述。 所以一行描述一件事即可。
 
     ```Ruby
-    # bad
+    # 不好
     puts 'foobar'; # superfluous semicolon
 
-    puts 'foo'; puts 'bar' # two expression on the same line
+    puts 'foo'; puts 'bar' # 同一行兩個表達式
 
-    # good
+    # 好
     puts 'foobar'
 
     puts 'foo'
     puts 'bar'
 
-    puts 'foo', 'bar' # this applies to puts in particular
+    puts 'foo', 'bar' # 這表示分開輸出
     ```
 
-* Prefer a single-line format for class definitions with no body.
+* 傾向用一行來定義無內容的類別。
 
     ```Ruby
-    # bad
+    # 不好
     class FooError < StandardError
     end
 
-    # good
+    # 可以
     class FooError < StandardError; end
+
+    # 好
+    FooError = Class.new(StandardError)
     ```
 
-* Avoid single-line methods. Although they are somewhat popular in the
-  wild, there are a few peculiarities about their definition syntax
-  that make their use undesirable. At any rate - there should no more
-  than one expression in a single-line method.
+* 避免用單行定義方法。雖然這很流行，但有些古怪的定義會讓他們用起來很不愉快。任何情況下，一個表達式就用一行來表示。
 
     ```Ruby
-    # bad
+    # 壞
     def too_much; something; something_else; end
 
-    # okish - notice that the first ; is required
+    # 可以 - 注意第一個 ; 是必需的
     def no_braces_method; body end
 
-    # okish - notice that the second ; is optional
+    # 可以 - 注意第二個 ; 是非必需的
     def no_braces_method; body; end
 
-    # okish - valid syntax, but no ; make it kind of hard to read
+    # 可以 - 有效的語法，但沒有用到 ; 閱讀上有困難
     def some_method() body end
 
-    # good
+    # 好
     def some_method
       body
     end
     ```
 
-    One exception to the rule are empty-body methods.
+    唯一的例外是方法內容為空白時。
 
     ```Ruby
     # good
@@ -141,8 +147,8 @@
     ```Ruby
     sum = 1 + 2
     a, b = 1, 2
-    1 > 2 ? true : false; puts 'Hi'
     [1, 2, 3].each { |e| puts e }
+    class FooError < StandardError; end
     ```
     （針對運算子）唯一的例外是當使用指數運算子時：
 
